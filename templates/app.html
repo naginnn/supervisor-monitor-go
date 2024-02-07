@@ -1,0 +1,35 @@
+{{template "base_app" .}}
+{{define "app"}}
+<div class="section">
+    <div class="row">
+        <span class="col-10">
+            <h2><strong>Имя</strong>: {{ .Name }}</h2>
+        </span>
+        <span>
+            <button id="start-app-btn" class="btn btn-outline-success btn-sm">Запустить</button>
+            <button id="stop-app-btn" class="btn btn-outline-danger btn-sm">Остановить</button>
+            <button id="restart-app-btn" class="btn btn-outline-warning btn-sm">Перезапустить</button>
+            <button id="kill-pid" class="btn btn-outline-danger btn-sm">KILL PID -9</button>
+            <img id="loading" src="/static/img/loading.gif" width="30" height="30"
+                 style="display: none" class="mx-2">
+        </span>
+    </div>
+
+
+    <div id="job-data" class="row"></div>
+
+    <span id="process-info" class="col-6">
+            <p class="ellipsify"><strong>Группа</strong>:<br>{{.Group}}</p>
+            <p><strong>Pid процесса</strong>:<br>{{.Pid}}</p>
+            <p><strong>Статус</strong>:<br>{{.StateName}}</p>
+            <p><strong>stdout_logfile</strong>:<strong><a
+                    href="/logs/{{.Name}}" class="nav-link">{{.StdoutLogfile}}</a></strong></p>
+            <p><strong>stderr_logfile</strong>:<strong><a
+                    href="/logs/err/{{.Name}}" class="nav-link">{{.StderrLogfile}}</a></strong></p>
+        </span>
+
+</div>
+
+<script src="/static/scripts/app.js" type="text/javascript"></script>
+
+{{end}}
